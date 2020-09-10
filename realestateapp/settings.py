@@ -37,7 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Third party appds
+    'agency',
+    # 'blog',
+    # 'bootstrap3',
+    'contact',
+    'page',
     'properties',
+    'search',
     'users',
 ]
 
@@ -116,8 +123,23 @@ USE_L10N = True
 USE_TZ = True
 
 
+
+
+LOGIN_REDIRECT_URL = '/'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "static_root")
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "media_root")
+
+
+PROTECTED_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "protected_media")
+
+
