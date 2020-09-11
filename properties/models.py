@@ -146,3 +146,4 @@ def Properties_pre_save_receiver(sender, instance, *args, **kwargs):
 pre_save.connect(Properties_pre_save_receiver, sender=Properties) 
 
 
+

@@ -44,8 +44,12 @@ INSTALLED_APPS = [
     'contact',
     'page',
     'properties',
+
     'search',
     'users',
+
+    'crispy_forms',
+
 ]
 
 MIDDLEWARE = [
@@ -121,6 +125,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# AUTH_USER_MODEL = 'users.User' #this changes the buit-in user model to ours 
 
 
 

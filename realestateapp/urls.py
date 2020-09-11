@@ -12,6 +12,7 @@ from .views import home_page, about_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('', home_page, name="home"),
     path('about', about_page, name="about"),
     # path('blog/', include("blog.urls")),
@@ -20,6 +21,9 @@ urlpatterns = [
     path('properties/', include("properties.urls")),
     path('search/', include("search.urls")),
 
+
+    path('', include('properties.urls')),
+    # path('', include('users.urls')),
 ]
 
 
