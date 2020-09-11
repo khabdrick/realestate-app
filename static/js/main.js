@@ -13,6 +13,37 @@ $(window).on('scroll', function () {
 });
 
 
+  // Auto Search
+  var searchForm = $(".search-form")
+  var searchInput = searchForm.find("[name='location']") // input name='q'
+  var typingTimer;
+  var typingInterval = 500 // .5 seconds
+  var searchBtn = searchForm.find("[type='submit']")
+  searchInput.mouseover()(function(event){
+    // key released
+    clearTimeout(typingTimer)
+
+    typingTimer = setTimeout(perfomSearch, typingInterval)
+  })
+
+  searchInput.keydown(function(event){
+    // key pressed
+    clearTimeout(typingTimer)
+  })
+
+  function displaySearching(){
+    searchBtn.addClass("disabled")
+    searchBtn.html("<i class='fa fa-spin fa-spinner'></i> Searching...")
+  }
+
+  function perfomSearch(){
+    displaySearching()
+    var query = searchInput.val()
+    setTimeout(function(){
+      window.location.href='/search/?q=' + query
+    }, 1000)
+    
+  }
 
 
 
