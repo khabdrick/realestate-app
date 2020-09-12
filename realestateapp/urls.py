@@ -17,7 +17,6 @@ urlpatterns = [
     path('about', about_page, name="about"),
     # path('blog/', include("blog.urls")),
     path('contact/', include("contact.urls")),
-    path('page/', include("page.urls")),
     path('properties/', include("properties.urls")),
     path('search/', include("search.urls")),
 

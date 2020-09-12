@@ -10,11 +10,11 @@ def home_page(request):
 	context 	= {
 		"object_list": object_list,
 	}
-	return render(request, 'page/index.html', context)
+	return render(request, 'index.html', context)
     
 
 def about_page(request):
-    return render(request, "page/about.html")
+    return render(request, "about.html")
 
 
 

@@ -10,7 +10,7 @@ from django.urls import reverse
 
 
 from realestateapp.utils import unique_slug_generator, get_filename
-from agency.models import Agency
+# from agency.models import Agency
 
 def get_filename_ext(filepath):
     base_name = os.path.basename(filepath)
@@ -71,45 +71,31 @@ PROPERTY_CHOICE = (
 	    ('Condo', 'Condo'),
 	    ('Duplex', 'Duplex'),
 	    ('Flat', 'Flat'),
-	    ('Self Contain', 'Self Contain'),
-	    ('Storey Building', 'Storey Building'),
-	    ('2 Storey Building', '2 Storey Building'),
+	    ('Self_Contain', 'Self Contain'),
+	    ('Storey_Building', 'Storey Building'),
+	    
 	)
 
 
-ROOMS_CHOICES = (
-		(1, 1),
-		(2, 2),
-		(3, 3),
-		(4, 4),
-		(5, 5),
+
+
+SALE_TYPE = (
+		('for_sale','For Sale'),
+		('for_rent','For Rent')
 	)
-
-
-ACTIVATION_CHOICES = (
-		('For Sale','For_Sale'),
-		('For Rent','For_Rent')
-	)
-
-# class Agency(models.Model):
-#     agent               = models.CharField(max_length=120)
-
-#     def __str__(self):
-#         return self.agent
 
 
 
 class Properties(models.Model):
-    agent                   = models.ForeignKey(Agency,blank=True, null=True, on_delete=models.CASCADE)
     slug                    = models.SlugField(blank=True,unique=True)
     title                   = models.CharField(max_length=120)
     description             = models.TextField(null=True, blank=True)
     location                = models.CharField(max_length=150)
-    property_type           = models.CharField(max_length=120, choices=PROPERTY_CHOICE,default="flat")
-    property_size           = models.IntegerField(default=0)
-    price                   = models.CharField(max_length=18)
-    bedrooms                = models.IntegerField(default=1, choices=ROOMS_CHOICES)
-    bathrooms               = models.IntegerField(default=1, choices=ROOMS_CHOICES)
+    property_type           = models.CharField(max_length=120, choices=PROPERTY_CHOICE,default="Self_Contain")
+    sqft                    = models.IntegerField(default=0)
+    price                   = models.DecimalField(decimal_places=2, max_digits=20, default=0.00)
+    bedrooms                = models.DecimalField(max_digits=2, decimal_places=1)
+    bathrooms               = models.DecimalField(max_digits=2, decimal_places=1)
     image1                  = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
     image2                  = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
     image3                  = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
@@ -119,8 +105,7 @@ class Properties(models.Model):
     featured        		= models.BooleanField(default=False)
     active                  = models.BooleanField(default=True)
     timestamp               = models.DateTimeField(auto_now_add=True)
-    availability 			= models.CharField(max_length=120, default='For_Sale',choices=ACTIVATION_CHOICES)
-    not_available 			= models.BooleanField(null=True, blank=True, default=False)
+    availability 			= models.BooleanField(null=True, blank=True, default=False)
  
     objects = PropertiesManager()
 
@@ -129,9 +114,6 @@ class Properties(models.Model):
         return reverse("Properties:detail", kwargs={"slug": self.slug})
 
     def __str__(self):
-        return self.title
-
-    def __unicode__(self):
         return self.title
 
     @property

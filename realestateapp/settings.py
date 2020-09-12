@@ -37,20 +37,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Third party appds
-    'agency',
-    # 'blog',
-    # 'bootstrap3',
+
+
+    # Third party apps
+    # 'crispy_forms',
+
+    # Installed apps
     'contact',
-    'page',
     'properties',
 
     'search',
     'users',
 
-    'crispy_forms',
+  
 
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
