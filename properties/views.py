@@ -79,50 +79,50 @@ class PropertiesDetailSlugView(ObjectViewedMixin, DetailView):
         return instance
 
 
-def _storey_building(request):
-    object_list         = Properties.objects.filter(property_type='2 Storey Building')
-    context             = {
-        "object_list": object_list
-    }
-    return render(request, "properties/2_storey_building.html")
+# def _storey_building(request):
+#     object_list         = Properties.objects.filter(property_type='2 Storey Building')
+#     context             = {
+#         "object_list": object_list
+#     }
+#     return render(request, "properties/2_storey_building.html")
 
-def storey_building(request):
-    return render(request, "properties/storey_building.html")
+# def storey_building(request):
+#     return render(request, "properties/storey_building.html")
 
-def bungalow(request):
-    object_list         = Properties.objects.filter(property_type='Bungalow')
-    context             = { 
-        "object_list": object_list
-    }
-    return render(request, "properties/bungalow.html", context)
+# def bungalow(request):
+#     object_list         = Properties.objects.filter(property_type='Bungalow')
+#     context             = { 
+#         "object_list": object_list
+#     }
+#     return render(request, "properties/bungalow.html", context)
 
-def condo(request):
-    object_list         = Properties.objects.filter(property_type='Condo')
-    context             = { 
-        "object_list": object_list
-    }
-    return render(request, "properties/condo.html", context)
+# def condo(request):
+#     object_list         = Properties.objects.filter(property_type='Condo')
+#     context             = { 
+#         "object_list": object_list
+#     }
+#     return render(request, "properties/condo.html", context)
 
-def duplex(request):
-    object_list         = Properties.objects.filter(property_type='Duplex')
-    context             = { 
-        "object_list": object_list
-    }
-    return render(request, "properties/duplex.html", context)
+# def duplex(request):
+#     object_list         = Properties.objects.filter(property_type='Duplex')
+#     context             = { 
+#         "object_list": object_list
+#     }
+#     return render(request, "properties/duplex.html", context)
 
-def flat(request):
-    object_list         = Properties.objects.filter(property_type='Flat')
-    context             = { 
-        "object_list": object_list
-    }
-    return render(request, "properties/flat.html", context)
+# def flat(request):
+#     object_list         = Properties.objects.filter(property_type='Flat')
+#     context             = { 
+#         "object_list": object_list
+#     }
+#     return render(request, "properties/flat.html", context)
 
-def self_contain(request):
-    object_list         = Properties.objects.filter(property_type='Self Contain')
-    context             = { 
-        "object_list": object_list
-    }
-    return render(request, "properties/self_contain.html", context)
+# def self_contain(request):
+#     object_list         = Properties.objects.filter(property_type='Self Contain')
+#     context             = { 
+#         "object_list": object_list
+#     }
+#     return render(request, "properties/self_contain.html", context)
 
 # import os
 # from wsgiref.util import FileWrapper # this used in django

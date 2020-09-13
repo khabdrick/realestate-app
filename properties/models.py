@@ -72,6 +72,7 @@ PROPERTY_CHOICE = (
 	    ('Duplex', 'Duplex'),
 	    ('Flat', 'Flat'),
 	    ('Self_Contain', 'Self Contain'),
+        ('land', 'Land'),
 	    ('Storey_Building', 'Storey Building'),
 	    
 	)
