@@ -2,11 +2,11 @@ from django.contrib.auth import authenticate, login, get_user_model
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render,redirect
 
-from properties.models import Properties
+from properties.models import Property
 
 
 def home_page(request):
-	object_list = Properties.objects.all().featured()
+	object_list = Property.objects.all().featured()
 	context 	= {
 		"object_list": object_list,
 	}

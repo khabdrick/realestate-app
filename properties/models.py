@@ -24,17 +24,17 @@ def upload_image_path(instance, filename):
     new_filename = random.randint(1,3910209312)
     name, ext = get_filename_ext(filename)
     final_filename = '{new_filename}{ext}'.format(new_filename=new_filename, ext=ext)
-    return "Properties/{new_filename}/{final_filename}".format(
+    return "Property/{new_filename}/{final_filename}".format(
             new_filename=new_filename, 
             final_filename=final_filename
             )
 
-class PropertiesQuerySet(models.query.QuerySet):
+class PropertyQuerySet(models.query.QuerySet):
     def active(self):
-        return self.filter(active=True, not_available=False)
+        return self.filter(active=True, availability=False)
 
     def featured(self):
-        return self.filter(featured=True, active=True, not_available=False)
+        return self.filter(featured=True, active=True, availability=False)
 
     def search(self, query):
         lookups = (Q(location__icontains=query) | 
@@ -46,9 +46,9 @@ class PropertiesQuerySet(models.query.QuerySet):
                   )
         return self.filter(lookups).distinct()
 
-class PropertiesManager(models.Manager):
+class PropertyManager(models.Manager):
     def get_queryset(self):
-        return PropertiesQuerySet(self.model, using=self._db)
+        return PropertyQuerySet(self.model, using=self._db)
 
     def all(self):
         return self.get_queryset().active()
@@ -87,7 +87,7 @@ SALE_TYPE = (
 
 
 
-class Properties(models.Model):
+class Property(models.Model):
     slug                    = models.SlugField(blank=True,unique=True)
     title                   = models.CharField(max_length=120)
     description             = models.TextField(null=True, blank=True)
@@ -106,9 +106,9 @@ class Properties(models.Model):
     featured        		= models.BooleanField(default=False)
     active                  = models.BooleanField(default=True)
     timestamp               = models.DateTimeField(auto_now_add=True)
-    availability 			= models.BooleanField(null=True, blank=True, default=False)
+    availability 			= models.BooleanField(null=True, blank=True, default=True)
  
-    objects = PropertiesManager()
+    objects = PropertyManager()
 
     def get_absolute_url(self):
         #return "/Properties/{slug}/".format(slug=self.slug)
@@ -122,11 +122,11 @@ class Properties(models.Model):
         return self.title
 
 
-def Properties_pre_save_receiver(sender, instance, *args, **kwargs):
+def Property_pre_save_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = unique_slug_generator(instance)
 
-pre_save.connect(Properties_pre_save_receiver, sender=Properties) 
+pre_save.connect(Property_pre_save_receiver, sender=Property) 
 
 
 

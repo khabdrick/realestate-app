@@ -8,7 +8,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .mixins import  ObjectViewedMixin
 
 
-from .models import  Properties
+from .models import  Property
 
 
 
@@ -30,7 +30,7 @@ from .models import  Properties
 
 
 
-class PropertiesListView(ListView):
+class PropertyListView(ListView):
     template_name = "properties/property.html"
 
     def get_context_data(self, *args, **kwargs):
@@ -52,8 +52,8 @@ def Properties_list_view(request):
 
 
 
-class PropertiesDetailSlugView(ObjectViewedMixin, DetailView):
-    queryset = Properties.objects.all()
+class PropertyDetailSlugView(ObjectViewedMixin, DetailView):
+    queryset = Property.objects.all()
     template_name = "products/detail.html"
 
     def get_context_data(self, *args, **kwargs):
@@ -78,107 +78,3 @@ class PropertiesDetailSlugView(ObjectViewedMixin, DetailView):
             raise Http404("Uhhmmm ")
         return instance
 
-
-# def _storey_building(request):
-#     object_list         = Properties.objects.filter(property_type='2 Storey Building')
-#     context             = {
-#         "object_list": object_list
-#     }
-#     return render(request, "properties/2_storey_building.html")
-
-# def storey_building(request):
-#     return render(request, "properties/storey_building.html")
-
-# def bungalow(request):
-#     object_list         = Properties.objects.filter(property_type='Bungalow')
-#     context             = { 
-#         "object_list": object_list
-#     }
-#     return render(request, "properties/bungalow.html", context)
-
-# def condo(request):
-#     object_list         = Properties.objects.filter(property_type='Condo')
-#     context             = { 
-#         "object_list": object_list
-#     }
-#     return render(request, "properties/condo.html", context)
-
-# def duplex(request):
-#     object_list         = Properties.objects.filter(property_type='Duplex')
-#     context             = { 
-#         "object_list": object_list
-#     }
-#     return render(request, "properties/duplex.html", context)
-
-# def flat(request):
-#     object_list         = Properties.objects.filter(property_type='Flat')
-#     context             = { 
-#         "object_list": object_list
-#     }
-#     return render(request, "properties/flat.html", context)
-
-# def self_contain(request):
-#     object_list         = Properties.objects.filter(property_type='Self Contain')
-#     context             = { 
-#         "object_list": object_list
-#     }
-#     return render(request, "properties/self_contain.html", context)
-
-# import os
-# from wsgiref.util import FileWrapper # this used in django
-# from mimetypes import guess_type
-
-# from django.conf import settings
-
-
-# class PropertiesDetailView(ObjectViewedMixin, DetailView):
-#     #queryset = Properties.objects.all()
-#     template_name = "properties/property_details.html"
-
-#     def get_context_data(self, *args, **kwargs):
-#         context = super(PropertiesDetailView, self).get_context_data(*args, **kwargs)
-#         print(context)
-#         # context['abc'] = 123
-#         return context
-
-#     def get_object(self, *args, **kwargs):
-#         request = self.request
-#         pk = self.kwargs.get('pk')
-#         instance = Properties.objects.get_by_id(pk)
-#         if instance is None:
-#             raise Http404("Properties doesn't exist")
-#         return instance
-
-#     # def get_queryset(self, *args, **kwargs):
-#     #     request = self.request
-#     #     pk = self.kwargs.get('pk')
-#     #     return Properties.objects.filter(pk=pk)
-
-
-# def Properties_detail_view(request, pk=None, *args, **kwargs):
-#     # instance = Properties.objects.get(pk=pk, featured=True) #id
-#     # instance = get_object_or_404(Properties, pk=pk, featured=True)
-#     # try:
-#     #     instance = Properties.objects.get(id=pk)
-#     # except Properties.DoesNotExist:
-#     #     print('no Properties here')
-#     #     raise Http404("Properties doesn't exist")
-#     # except:
-#     #     print("huh?")
-
-#     instance = Properties.objects.get_by_id(pk)
-#     if instance is None:
-#         raise Http404("Properties doesn't exist")
-#     #print(instance)
-#     # qs  = Properties.objects.filter(id=pk)
-
-#     # #print(qs)
-#     # if qs.exists() and qs.count() == 1: # len(qs)
-#     #     instance = qs.first()
-#     # else:
-#     #     raise Http404("Properties doesn't exist")
-
-#     context = {
-#         'object': instance
-#     }
-#     return render(request, "properties/property_details.html", context)

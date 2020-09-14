@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 from django.db.models import Q
-from properties.models import Properties #or whatever your model is
+from properties.models import Property #or whatever your model is
 
 
-class SearchPropertiesView(ListView):
+class SearchPropertyView(ListView):
     template_name = "page/search.html"
 
     def get_context_data(self, *args, **kwargs):
-        context = super(SearchPropertiesView, self).get_context_data(*args, **kwargs)
+        context = super(SearchPropertyView, self).get_context_data(*args, **kwargs)
         query = self.request.GET.get('location')
         context['query'] = query
         # SearchQuery.objects.create(query=query)
@@ -19,8 +19,8 @@ class SearchPropertiesView(ListView):
         method_dict = request.GET
         query = method_dict.get('q', None) # method_dict['q']
         if query is not None:
-            return Properties.objects.search(query)
-        return Properties.objects.featured()
+            return Property.objects.search(query)
+        return Property.objects.featured()
         '''
         __icontains = field contains this
         __iexact = fields is exactly this
