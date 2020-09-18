@@ -1,7 +1,11 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 from django.db.models import Q
+<<<<<<< Updated upstream
 from properties.models import Properties #or whatever your model is
+=======
+from Property.models import Property #or whatever your model is
+>>>>>>> Stashed changes
 
 
 class SearchPropertiesView(ListView):

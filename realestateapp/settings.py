@@ -25,8 +25,34 @@ SECRET_KEY = '4lgin4vvjuttiiy83k4&=ovw%n^p$1gufq1ae%x8ba330)m^-$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+DEBUG = True
 
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'jacecorporation1@gmail.com' # sendgrid
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'dhubikmygghebvic')
+EMAIL_PORT = 465
+
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Python ecommerce <jacecorporation1@gmail.com>'
+BASE_URL = '127.0.0.1:8000'
+
+MANAGERS = (
+    ('Eyo Joshua', "jacecorporation1@gmail.com"),
+)
+
+ADMINS = MANAGERS
+
+
+AUTH_USER_MODEL = 'accounts.User' #changes the built-in user model to ours
+LOGIN_URL = '/login/'
+LOGIN_URL_REDIRECT = '/'
+LOGOUT_URL = '/logout/'
+
+
+FORCE_SESSION_TO_ONE = False
+FORCE_INACTIVE_USER_ENDSESSION= False
 
 # Application definition
 
@@ -37,6 +63,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< Updated upstream
     # Third party appds
     'agency',
     # 'blog',
@@ -50,6 +77,19 @@ INSTALLED_APPS = [
 
     'crispy_forms',
 
+=======
+
+
+    # Third party apps
+    # 'crispy_forms',
+
+    # Installed apps
+    'accounts',
+    'contact',
+    'Property',
+
+    'search',
+>>>>>>> Stashed changes
 ]
 
 MIDDLEWARE = [
@@ -63,6 +103,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'realestateapp.urls'
+LOGOUT_REDIRECT_URL = '/login/'
 
 TEMPLATES = [
     {

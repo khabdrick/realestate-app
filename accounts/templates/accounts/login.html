@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+   
+    
+<!-- slider_area_start -->
+<div class="slider_area">
+        <div class="single_slider  d-flex align-items-center slider_bg_1">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-10 offset-xl-1">
+                            <div class="slider_text text-center justify-content-center col-xl-12 col-md-12 col-lg-12">
+                                <h3>Have fun with this App</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+<!-- slider_area_end -->
+
+<!-- popular_property  -->
+<div class="popular_property">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+            <div class="section_title mb-40 text-center">
+                <h3>Login</h3>
+            </div>
+        </div>
+    </div>
+      <form class="form-group" method='POST'> {% csrf_token %}
+        {% for field in form %}
+            {{ field.label_tag }}
+            {{ field }}
+
+            {% if field.help_text %}
+                <small style="color: gray;" >{{ field.help_text }}</small>
+            {% endif %}
+
+            {% for error in field.errors %}
+                <small style="color: red;" >{{ error }}</small>
+            {% endfor %}
+            <br>
+        {% endfor %}
+        <br>
+        <div class="container"><button style="border-radius: 5px;" type='submit' class='button button-contactForm boxed-btn'>Login</button></div>
+      </form>
+    </div>
+</div>
+<div class="container" >      <p><b><strong>Don't have an account?                             
+  <div class="book_btn d-none d-lg-block">
+      <a class="register btn btn-primary" href="{% url 'register' %}">Register</a></div>
+</div></strong></b></p></div>
+
+    <!-- /contact_action_area  -->
+{% endblock %}
+
