@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     # Third party apps
     # 'crispy_forms',
+    'bootstrap4',
 
     # Installed apps
     'contact',
@@ -128,7 +129,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-# AUTH_USER_MODEL = 'users.User' #this changes the buit-in user model to ours 
+AUTH_USER_MODEL = 'users.User' #this changes the buit-in user model to ours 
+FORCE_SESSION_TO_ONE = False
+FORCE_INACTIVE_USER_ENDSESSION= False
+
 
 
 

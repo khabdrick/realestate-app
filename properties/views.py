@@ -12,21 +12,21 @@ from .models import  Property
 
 
 
-# class PropertiesFeaturedListView(ListView):
+# class PropertyFeaturedListView(ListView):
 #     template_name = "page/index.html"
 
 #     def get_queryset(self, *args, **kwargs):
 #         request = self.request
-#         return Properties.objects.all().featured()
+#         return Property.objects.all().featured()
 
 
-# class PropertiesFeaturedDetailView(ObjectViewedMixin, DetailView):
-#     queryset = Properties.objects.all().featured()
-#     template_name = "properties/featured-detail.html"
+# class PropertyFeaturedDetailView(ObjectViewedMixin, DetailView):
+#     queryset = Property.objects.all().featured()
+#     template_name = "property/featured-detail.html"
 
 #     # def get_queryset(self, *args, **kwargs):
 #     #     request = self.request
-#     #     return Properties.objects.featured(
+#     #     return Property.objects.featured(
 
 
 
@@ -68,11 +68,11 @@ class PropertyDetailSlugView(ObjectViewedMixin, DetailView):
 
         #instance = get_object_or_404(Product, slug=slug, active=True)
         try:
-            instance = Properties.objects.get(slug=slug, active=True)
-        except Properties.DoesNotExist:
+            instance = Property.objects.get(slug=slug, active=True)
+        except Property.DoesNotExist:
             raise Http404("Not found..")
-        except Properties.MultipleObjectsReturned:
-            qs = Properties.objects.filter(slug=slug, active=True)
+        except Property.MultipleObjectsReturned:
+            qs = Property.objects.filter(slug=slug, active=True)
             instance = qs.first()
         except:
             raise Http404("Uhhmmm ")

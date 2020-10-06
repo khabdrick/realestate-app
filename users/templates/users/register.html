@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load static %}
+
+
+
+{% block content %}
+<style>
+    .form{
+        margin-top: 100px;
+    }
+
+    .form_btn {
+        margin-bottom: 100px;
+    }
+
+</style>
+<div class="slider_area">
+    <div class="single_slider  d-flex align-items-center slider_bg_1">
+<div class="container">
+    <div class="row">
+    
+    <div class="col form col-md-5">
+    <h1>Sign Up</h1>
+    <form method="POST" class=''>
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <div class="form_btn">
+        <input type="submit" value="Sign Up" class="btn btn-default">
+    </div>
+    </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

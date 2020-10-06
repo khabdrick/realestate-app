@@ -19,6 +19,8 @@ urlpatterns = [
     path('contact/', include("contact.urls")),
     path('properties/', include("properties.urls")),
     path('search/', include("search.urls")),
+    path('users/', include("users.urls")),
+
 
 
     path('', include('properties.urls')),
