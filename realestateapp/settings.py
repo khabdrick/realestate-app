@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     # Installed apps
     'contact',
     'properties',
-    'blog'
+    'blog',
     'search',
     'users',
 
