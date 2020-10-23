@@ -1,5 +1,5 @@
 # realestate-app
 
 ###superuser###
-username=admin
-password=qwert1234
+email=admin@gmail.com
+password=qwerty1234
