@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login, get_user_model
-from django.http import HttpResponse, JsonResponse
+
 from django.shortcuts import render,redirect
 
 from properties.models import Property

@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 
     # Third party apps
     # 'crispy_forms',
-    'bootstrap4',
+    # 'bootstrap4',
 
     # Installed apps
     'contact',
